@@ -1,0 +1,13 @@
+.messages {
+    overflow: scroll;
+    height: 900px
+;
+}
+.messages a {
+  text-decoration: none;
+  color: #333333;
+}
+.contentChat{
+  margin-left: 50px;
+  font-size: 12px;
+}
