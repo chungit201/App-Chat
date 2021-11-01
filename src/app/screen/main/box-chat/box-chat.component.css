@@ -1,0 +1,14 @@
+.col-content{-webkit-box-flex:1;padding:0px;-ms-flex:1;flex:1;height: 500px;}
+.message{
+    overflow-y: scroll;
+}
+.sedding-mess{
+  position: relative;
+  bottom: 10px;
+}
+.compose{
+  border: 1px
+  solid pink;
+  border-radius: 10px
+;
+}

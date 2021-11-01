@@ -2,11 +2,12 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
+import Message from './Model/message'
 const app = express();
 app.use(cors())
-// const http = require("http");
-// const server = http.createServer(app);
-// const io = require('socket.io')(server)
+const http = require("http");
+const server = http.createServer(app);
+const io = require('socket.io')(server)
 
 
 const authRouter = require("./Routes/auth");
@@ -46,19 +47,41 @@ app.use("/api", followRouter);
 
 
 const port = process.env.PORT || 8000;
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Server is running on port : ${port}`);
 });
+const users = [];
+io.on('connection', (socket) => {
+  // console.log('user connected :' + socket.id);
+  socket.on('chat message', (msg) => {
+    io.emit('chat message', msg);
+  });
+  socket.on('sendding-chat', () => {
+    socket.broadcast.emit('a-sendding-message')
+    // console.log('sendding chat')
+  })
+  socket.on('stop-sendding-chat', () => {
+    io.sockets.emit('a-stop-message');
+    // console.log('Stop sendding');
+  });
+  socket.on("user_connected", function (username) {
+    // save in array
+    console.log(username);
+    users[username] = socket.id;
+    // socket ID will be used to send message to individual person;
+    // notify all connected clients;
+    io.emit("user_connected", username);
+  });
+  socket.on("send_message", function (data) {
+    console.log(data);
+    const valueMess = {
+      user: data.sender,
+      content: data.message,
+      receiver:data.receiver,
+    }
 
-// io.on("connection", (socket) => {
-//   console.log('User connected : '+socket.id);
-//   socket.on('join', function (data) {    
-//     socket.join(data);
-//     console.log(socket.rooms);
-//   });
-//   socket.on('client-chat',(data)=>{
-//     console.log(data);
-//     io.emit('serve-user-chat', data);
-//   });
- 
-// });
+    // send event to receiver;
+    var socketId = users[data.receiver];
+    io.to(socketId).emit("new_message", data);
+  });
+});

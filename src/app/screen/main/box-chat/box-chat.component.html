@@ -1,5 +1,6 @@
 
-            <section class="message">
+             <div class="col-content">
+           <section class="message">
                 <div class="grid-message">
                     <div class="col-message-received">
                         <div class="message-received">
@@ -25,21 +26,8 @@
                             <p>I guess if I had some practice I could again. It's been years.</p>
                         </div>
                     </div>
-                    <div class="col-message-received">
-                        <div class="message-received">
-                            <p>Dat titan though...</p>
-                        </div>
-                    </div>
-                    <div class="col-message-sent">
-                        <div class="message-sent">
-                            <p>Trombone, guitar, titan?</p>
-                        </div>
-                    </div>
-                    <div class="col-message-received">
-                        <div class="message-received">
-                            <p>Niiiiice.</p>
-                        </div>
-                    </div>
+
+
                     <div class="col-message-sent">
                         <div class="message-sent">
                             <div class="">
@@ -64,31 +52,24 @@
                             <p>It's cool.</p>
                         </div>
                     </div>
-                    <div class="col-message-received">
-                        <div class="message-received">
-                            <p>Ok.</p>
-                        </div>
-                        <div class="message-received">
-                            <p>Do you play EVE Online?</p>
-                        </div>
-                    </div>
-                    <div class="col-message-sent">
-                        <div class="message-sent">
-                            <p>Not anymore.</p>
-                        </div>
-                    </div>
-                    <div class="col-message-received">
-                        <div class="message-received">
-                            <p>But, can you?</p>
-                        </div>
-                    </div>
-                    <div class="col-message-sent">
-                        <div class="message-sent">
-                            <p>I guess if I had some practice I could again. It's been years.</p>
-                        </div>
-                    </div>
 
+
+                  <div class="sedding-mess">
+
+                  </div>
                 </div>
-            </section>
 
-         
+            </section>
+        </div>
+      <form [formGroup]="chatForm" (submit)="submitMess()">
+        <div class="col-foot">
+            <div class="compose" >
+              <input (focusout)="focusOut($event)" (focusin)="focusSin($event)"  placeholder="Type a message" type="text" formControlName="messages">
+              <div class="compose-dock">
+                <div class="dock"><img src="assets/img/picture.svg"><img src="assets/img/smile.svg"></div>
+              </div>
+            </div>
+          </div>
+      </form>
+
+

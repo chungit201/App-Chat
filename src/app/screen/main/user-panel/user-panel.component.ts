@@ -16,7 +16,7 @@ export class UserPanelComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.route.snapshot.paramMap.get('id'))
+
     this.getProfile()
   }
   private getProfile(): void {

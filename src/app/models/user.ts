@@ -5,9 +5,10 @@ export interface User {
     name?: String;
     email?: String;
     avatar?: String;
-    status?: any;
+    status?: String;
     birthday?: Date;
     password?: String;
+    socketId?:String;
     friend?: Friend;
     active?: Boolean;
     activeStatus?: Boolean;

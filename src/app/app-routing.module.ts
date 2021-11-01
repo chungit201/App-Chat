@@ -11,7 +11,6 @@ const routes: Routes = [
   {
     path: '', component: HomeComponent, canActivate: [AuthGuard],
     children: [
-
         {path:'t/:id', component:BoxChatComponent,
           canActivate:[AuthGuard]
         }

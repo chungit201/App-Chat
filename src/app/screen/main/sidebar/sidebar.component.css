@@ -1,5 +1,4 @@
 .messages {
-    overflow: scroll;
     height: 900px
 ;
 }
@@ -10,4 +9,8 @@
 .contentChat{
   margin-left: 50px;
   font-size: 12px;
+}
+.contentChat{
+  color: rgb(26, 21, 21) !important;
+  font-weight: 500;
 }

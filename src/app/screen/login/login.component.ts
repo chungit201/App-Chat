@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
+import {Friend} from "../../models/friend";
+import {FriendsService} from "../../services/friends.service";
 
 @Component({
   selector: 'app-login',
@@ -11,13 +13,16 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginComponent implements OnInit {
   private user: User[] = [];
+  public dataFriend: any[] = [];
+  private id!: string;
   constructor(
     private userService: UserService,
+    private friendService: FriendsService,
     private router:Router
   ) { }
 
   ngOnInit(): void {
-    this.login()
+    this.login();
   }
   userForm = new FormGroup({
     email: new FormControl('', [
@@ -46,13 +51,15 @@ export class LoginComponent implements OnInit {
     this.userService.signIn(this.user).subscribe(
       (data: any) => {
         console.log(data);
-
         this.userService.setToken(data.token);
         this.userService.setID(data.user._id);
 
-        this.router.navigate(['/']);
+        this.router.navigate([`/`]);
       },
+
 
     );
   }
+
 }
+

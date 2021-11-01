@@ -1,11 +1,9 @@
 <header>
 
-    <div class="container">
-
+    <div class="container" *ngIf="profile">
         <div class="left"><img src="assets/img/logo.svg"></div>
-
         <div class="middle">
-            <h3>Theresa Hudson</h3>
+            <h3>{{profile.name}}</h3>
             <p>Messenger</p>
         </div>
         <div class="right">
@@ -15,5 +13,4 @@
             <div class="avatar"><img src="assets/img/avatar.png"></div>
         </div>
     </div>
-
 </header>

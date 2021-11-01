@@ -28,6 +28,9 @@ const userSchema = new mongoose.Schema({
     type: ObjectId,
     ref: 'Status'
   },
+  socketId:{
+    type:String
+  },
   follower :{
     type:ObjectId,
     ref: 'Follow'

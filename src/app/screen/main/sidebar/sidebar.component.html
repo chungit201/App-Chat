@@ -1,15 +1,13 @@
-<div class="messages" >
-
-   <li *ngFor="let friend of dataFriend">
-     <a href="" >
-     <div class="avatar">
-       <div class="avatar-image">
-         <div class="status online"></div><img src="assets/img/avatar-2.png">
-       </div>
-     </div>
-     <h3>{{friend.name}}</h3>
-     <p class="contentChat"> Bạn: message chat</p>
-     </a>
-   </li>
-
+<div class="messages">
+  <li *ngFor="let friend of dataFriend">
+    <a href="" routerLink="/t/{{friend._id}}">
+      <div class="avatar">
+        <div class="avatar-image">
+          <div class="status online"></div><img src="assets/img/avatar-2.png">
+        </div>
+      </div>
+      <h3>{{friend.name}}</h3>
+      <p class="contentChat" *ngIf="messager" style="font-weight: 700;">{{messager.message}} </p>
+    </a>
+  </li>
 </div>
